@@ -9,10 +9,12 @@
 ============================================================================== *)
 
 let () =
-  let open    Alcotest in
+  let open Alcotest in
   run "OCaml Template"
     [
       ( "Test Group",
-      [ Alcotest.test_case "Hello" `Quick (fun () -> Alcotest.(check string) "same strings" "Hello" "Hello") ]
-      )
+        [
+          Alcotest.test_case "Hello" `Quick (fun () ->
+              Alcotest.(check string) "same strings" "Hello" "Hello");
+        ] );
     ]

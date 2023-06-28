@@ -8,5 +8,4 @@
 
 ============================================================================== *)
 
-let%test "String equal" =
-  Alcotest.(check string) "Test strings" "world" "world"
+let%test "String equal" = Alcotest.(check string) "Test strings" "world" "world"
