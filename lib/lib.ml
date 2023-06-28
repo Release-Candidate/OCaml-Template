@@ -3,16 +3,10 @@
  SPDX-License-Identifier: GPL-3.0-or-later
 
  Project:  OCaml-Template
- File:     test.ml
+ File:     lib.ml
  Date:     28.Jun.2023
 
 ============================================================================== *)
 
-let () =
-  let open    Alcotest in
-  run "OCaml Template"
-    [
-      ( "Test Group",
-      [ Alcotest.test_case "Hello" `Quick (fun () -> Alcotest.(check string) "same strings" "Hello" "Hello") ]
-      )
-    ]
+let%test "String equal" =
+  Alcotest.(check string) "Test strings" "world" "world"
