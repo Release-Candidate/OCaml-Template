@@ -2,12 +2,12 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
 # Project:  OCaml-Template
-# File:     build.yml
+# File:     test.yml
 # Date:     28.Jun.2023
 #
 # ==============================================================================
 
-name: Build
+name: Test
 
 on:
     push:
@@ -36,11 +36,11 @@ jobs:
             dra27: https://github.com/dra27/opam-repository.git#windows-5.0
             default: https://github.com/fdopen/opam-repository-mingw.git#opam2
 
-      - name: Build & Run
+      - name: Build & Test
         run: |
           opam install dune alcotest
           opam exec -- dune build
-          opam exec -- dune exec OCamlTemplate
+          opam exec -- dune test
 
   Unix:
     strategy:
@@ -62,8 +62,8 @@ jobs:
           opam-pin: false
           opam-depext: false
 
-      - name: Build & Run
+      - name: Build & Test
         run: |
           opam install dune alcotest
           opam exec -- dune build
-          opam exec -- dune exec OCamlTemplate
+          opam exec -- dune test

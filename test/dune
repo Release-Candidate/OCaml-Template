@@ -1,2 +1,3 @@
 (test
- (name OCamlTemplate))
+ (name test)
+ (libraries alcotest OCamlTemplate))
