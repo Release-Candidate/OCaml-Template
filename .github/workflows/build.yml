@@ -38,8 +38,8 @@ jobs:
 
       - run: |
           opam install dune
-          dune build
-          dune exec OCamlTemplate
+          opam exec -- dune build
+          opam exec -- dune exec OCamlTemplate
 
   Unix:
     strategy:
@@ -63,5 +63,5 @@ jobs:
 
       - run: |
           opam install dune
-          dune build
-          dune exec OCamlTemplate
+          opam exec -- dune build
+          opam exec -- dune exec OCamlTemplate
