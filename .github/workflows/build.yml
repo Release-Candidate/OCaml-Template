@@ -20,7 +20,7 @@ jobs:
     strategy:
             matrix:
                 os: [windows-latest]
-                ocaml: [ocaml.5.0.x]
+                ocaml: [ocaml.5.0.0]
 
     runs-on: ${{ matrix.os }}
 
@@ -37,6 +37,7 @@ jobs:
             default: https://github.com/fdopen/opam-repository-mingw.git#opam2
 
       - run: |
+          opam install dune
           dune build
           dune exec OCamlTemplate
 
@@ -57,7 +58,10 @@ jobs:
         with:
           ocaml-compiler: ${{ matrix.ocaml }}
           opam-disable-sandboxing: true
+          opam-pin: false
+          opam-depext: false
 
       - run: |
+          opam install dune
           dune build
           dune exec OCamlTemplate
