@@ -1,0 +1,34 @@
+ 
+name: Build
+
+on:
+    push:
+        branches: ["main"]
+    pull_request:
+        branches: ["main"]
+
+jobs: 
+  windows:
+    
+    strategy:
+            matrix:
+                os: [windows-latest]
+                ocaml: [ocaml.5.0.0]
+    
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set-up OCaml
+        uses: ocaml/setup-ocaml@v2
+        with:
+          ocaml-compiler: ${{ matrix.ocaml }},ocaml-option-mingw
+          opam-repositories: |
+            dra27: https://github.com/dra27/opam-repository.git#windows-5.0
+            default: https://github.com/fdopen/opam-repository-mingw.git#opam2
+
+      - run: | 
+          dune build
+          dune exec OCamlTemplate
